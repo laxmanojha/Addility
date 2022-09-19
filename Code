@@ -1,0 +1,81 @@
+#include<iostream>
+#include<iomanip>
+#include<windows.h>
+using namespace std;
+
+static int points=0,j=0;
+void timeout()
+{
+    system("cls");
+    cout<<setfill(' ')<<setw(55)<<"---------------------------\n";
+    cout<<setfill(' ')<<setw(55)<<"         TIME OUT          \n";
+    cout<<setfill(' ')<<setw(55)<<"---------------------------\n";
+}
+void timer(int h, int m, int s)
+{//static int i=0;
+    for(;;)
+    {
+        
+        if(h==0&&m==0&&s==0)
+        {
+            timeout();
+            break;
+        }
+        if(m==0&&s==0)
+        {
+            
+            m=59;
+            h--;
+        }
+        if(s==0)
+        {
+            
+            s=59;
+            m--;
+        }
+        system("cls");
+    cout<<setfill(' ')<<setw(55)<<"          TIMER          \n";
+    cout<<setfill(' ')<<setw(55)<<"---------------------------\n";
+    cout<<setfill(' ')<<setw(41)<<"|             "<<s--<<"           |\n";
+    cout<<setfill(' ')<<setw(55)<<"---------------------------\n";
+    cout<<setfill(' ')<<setw(65)<<"Points: "<<points<<"       \n";
+    int arr[]={1,4,3,2,5,8,5,9,7,6,9,1,4,8,11,13,12,17,15,20,24,21};
+    cout<<arr[j]<<"+"<<arr[j+1]<<": ";
+    Sleep(1000);
+    }
+    j++;
+}
+void time(void)
+{
+    cout<<setfill(' ')<<setw(52)<<"HURRAY! CORRECT ANSWER!!";
+    Sleep(2000);
+    system("cls");
+}
+
+int main()
+{
+    int a=0,p=0;
+    // static int j=0;
+    int array[]={1,4,3,2,5,8,5,9,7,6,9,1,4,8,11,13,12,17,15,20,24,21};
+    for(;;)
+    {
+        p=array[j]+array[j+1];
+        timer(0,0,5);
+        cout<<setfill(' ')<<setw(43)<<" your answer: ";
+        cin>>a;
+        if(p==a)
+        {
+            time();
+            points++;
+        }
+        else
+        {
+            cout<<setfill(' ')<<setw(48)<<"  OOPS WRONG ANSWER\n"<<endl;
+            cout<<setfill(' ')<<setw(46)<<" correct answer: "<<p<<"\n";
+            cout<<setfill(' ')<<setw(38)<<" Points: "<<points;
+            break;
+        }
+        j++;
+    }
+    return 0;
+}
